@@ -31,7 +31,7 @@ app.use(bodyPaser.json());
 app.post('/monitor-custom-yes',(req,res) => {
     var user = req.body.result.parameters.username;
     var pass = req.body.result.parameters.password;
-    var speech = 'hellofromtheotherside';
+    var speech = req.body.result.parameters.username: "Seems like some problem. Speak again.";
     //let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
     //let query = db.query(sql, (err,result) => {
     //    if(err) speech = 'Cannot Found';
@@ -39,8 +39,8 @@ app.post('/monitor-custom-yes',(req,res) => {
     //});
 
     return res.json({
-            "type": "text",
-            "text": speech
+       "type": "text",
+       "text": speech
     });
 });
 
