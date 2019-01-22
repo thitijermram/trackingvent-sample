@@ -28,7 +28,7 @@ app.use(
 
 app.use(bodyPaser.json());
 
-app.post('/monitor - custom - yes',(req,res) => {
+app.post('/monitor-custom-yes',(req,res) => {
     var user = req.body.result.parameters.username;
     var pass = req.body.result.parameters.password;
     var speech = 'hellofromtheotherside';
