@@ -35,12 +35,11 @@ app.get('/monitor - custom - yes',(req,res) => {
             pass: 'dew28433',
             db  : 'id7769008_trackingventilator'
     });
-
     let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
     let query = db.query(sql, (err,result) => {
         if(err) console.log('Cannot Query');
         console.log(result);
-        res.send('Customer Fetched...);
+        res.send('Customer Fetched...');
     });
 });
 
