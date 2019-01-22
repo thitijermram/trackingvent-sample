@@ -40,8 +40,8 @@ app.post('/monitor - custom - yes',(req,res) => {
         if(err) console.log('Cannot Query');
         console.log(result);
         return res.json({
-            speech: speech,
-            displayText: speech,
+            speech: user,
+            displayText: user,
             source: "webhook-echo-sample"
         });
     });
