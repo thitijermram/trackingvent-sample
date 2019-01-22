@@ -32,6 +32,20 @@ app.post('/monitor -custom - yes',(req,res) => {
     });
 });
 
+app.post("/echo", function(req, res) {
+  var speech =
+    req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.echoText
+      ? req.body.result.parameters.echoText
+      : "Seems like some problem. Speak again.";
+  return res.json({
+    speech: speech,
+    displayText: speech,
+    source: "webhook-echo-sample"
+  });
+});
+
 app.listen(process.env.PORT ||'3000',() => {
     console.log('Server up!');
 });
