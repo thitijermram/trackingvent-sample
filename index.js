@@ -36,6 +36,13 @@ app.post("/monitor-custom-yes",function(req, res){
             pass: 'dew28433',
             db  : 'id7769008_trackingventilator'
     });
+    
+    db.connect((err) => {
+        if(err) console.log(err);
+        console.log('MySQL!!');
+        answer = 'MySQL';
+    });
+    
     let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
     let query = db.query(sql, (err,result) => {
         if(err) console.log('Cannot Query');
