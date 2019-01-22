@@ -17,7 +17,7 @@ app.get('/',(req,res)=>{
     res.send('Hello World');
 });
 
-app.post("/monitor - custom - yes",function(req, res){
+app.post("/monitor-custom-yes",function(req, res){
     var user =
     req.body.result &&
     req.body.result.parameters &&
