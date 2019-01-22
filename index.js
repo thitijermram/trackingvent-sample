@@ -34,8 +34,8 @@ app.post('/monitor - custom - yes',(req,res) => {
     });
 
     return res.json({
-            speech: speech,
-            displayText: speech,
+            speech: user,
+            displayText: user,
             source: "webhook-sample"
     });
 });
