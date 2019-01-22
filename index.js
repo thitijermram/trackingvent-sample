@@ -17,18 +17,17 @@ app.get('/',(req,res)=>{
     res.send('Hello World');
 });
 
-app.post('/monitor -custom - yes',(req,res) => {
+app.post("/monitor - custom - yes",function(req, res){
     var user =
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.username
       ? req.body.result.parameters.username
       : "Seems like some problem. Speak again.";
-    
     return res.json({
-            speech: user,
-            displayText: user,
-            source: "webhook-echo-sample"
+       speech: user,
+       displayText: user,
+       source: "webhook-echo-sample"
     });
 });
 
@@ -40,9 +39,9 @@ app.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
   return res.json({
-    speech: speech,
-    displayText: speech,
-    source: "webhook-echo-sample"
+     speech: speech,
+     displayText: speech,
+     source: "webhook-echo-sample"
   });
 });
 
