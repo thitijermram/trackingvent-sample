@@ -4,24 +4,6 @@ const express = require('express');
 const bodyPaser = require('body-parser');
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
-    host     :  'localhost',
-    user     :  'id7769008_thiti7600',
-    password :  'dew28433',
-    database :  'id7769008_trackingventilator'
-});
-
-db.connect((err) => {
-    if(err){
-        console.log(err);
-    }
-    console.log('MySql Connected...');
-    return res.json({
-            "type": "text",
-            "text": "MySqlConnected..."
-    });
-});
-
 const app = express();
 
 app.use(
