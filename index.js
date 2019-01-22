@@ -32,11 +32,11 @@ app.post('/monitor-custom-yes',(req,res) => {
     var user = req.body.result.parameters.username;
     var pass = req.body.result.parameters.password;
     var speech = 'hellofromtheotherside';
-    let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
-    let query = db.query(sql, (err,result) => {
-        if(err) speech = 'Cannot Found';
-        speech = 'Found!';
-    });
+    //let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
+    //let query = db.query(sql, (err,result) => {
+    //    if(err) speech = 'Cannot Found';
+    //    speech = 'Found!';
+    //});
 
     return res.json({
             "type": "text",
