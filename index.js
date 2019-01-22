@@ -29,7 +29,6 @@ app.post("/monitor-custom-yes",function(req, res){
                 req.body.result.parameters.password
                 ? req.body.result.parameters.password
                 : "Seems like some problem. Speak again.";
-    var answer = 'EZ';
     const db = mysql.createConnection({
             host: 'localhost',
             user: 'id7769008_thiti7600',
@@ -50,8 +49,8 @@ app.post("/monitor-custom-yes",function(req, res){
         answer = result;
     });
     return res.json({
-       speech: answer,
-       displayText: answer,
+       speech: user,
+       displayText: user,
        source: "webhook-echo-sample"
     });
 });
