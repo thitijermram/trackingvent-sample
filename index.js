@@ -32,7 +32,8 @@ app.use(
 
 app.use(bodyPaser.json());
 
-app.post('/Monitor - custom - yes',(req,res) => {
+app.post('/monitor - custom - yes',(req,res) => {
+    /*
     var user = req.body.result.parameters.username
         ? req.body.result.parameters.echoText
         : "Seems like some problem. Speak again.";
@@ -41,14 +42,18 @@ app.post('/Monitor - custom - yes',(req,res) => {
         ? req.body.result.parameters.echoText
         : "Seems like some problem. Speak again.";
     
+    */
+    
     var speech = 'hellofromtheotherside';
-  
+    
+    /*
     let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
     let query = db.query(sql, (err,result) => {
         if(err) speech = 'Cannot Found';
         speech = 'Found!';
     });
-
+    */
+    
     return res.json({
             "type": "text",
             "text": speech
