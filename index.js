@@ -14,8 +14,8 @@ app.use(
 app.use(bodyPaser.json());
 
 app.post('/monitor - custom - yes',(req,res) => {
-    var user = req.body.result.parameters.username;
-    var pass = req.body.result.parameters.password;
+    var user = req.body.result.parameters.username : "Seems like some problem. Speak again.";
+    var pass = req.body.result.parameters.password : "Seems like some problem. Speak again.";
 
     const db = mysql.createConnection({
             host: 'localhost',
@@ -26,11 +26,9 @@ app.post('/monitor - custom - yes',(req,res) => {
 
     let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
 
-    let speech = 'hellofromtheotherside';
-    
     db.query(sql, (err,result) => {
         if(err) console.log('Cannot Query');
-        speech = result;
+        console.log(result);
     });
 
     return res.json({
