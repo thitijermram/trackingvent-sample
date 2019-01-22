@@ -28,22 +28,10 @@ app.post('/monitor - custom - yes',(req,res) => {
                 req.body.result.parameters.password
                 ? req.body.result.parameters.password
                 : "Seems like some problem. Speak again.";
-
-    const db = mysql.createConnection({
-            host: 'localhost',
-            user: 'id7769008_thiti7600',
-            pass: 'dew28433',
-            db  : 'id7769008_trackingventilator'
-    });
-    let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
-    let query = db.query(sql, (err,result) => {
-        if(err) console.log('Cannot Query');
-        console.log(result);
-        return res.json({
+    return res.json({
             speech: user,
             displayText: user,
             source: "webhook-echo-sample"
-        });
     });
 });
 
