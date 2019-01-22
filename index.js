@@ -43,7 +43,7 @@ app.post("/monitor-custom-yes",function(req, res){
         answer = 'MySQL';
     });
     
-    let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Pass ${pass}`;
+    let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Password ${pass}`;
     let query = db.query(sql, (err,result) => {
         if(err) console.log('Cannot Query');
         console.log(result);
