@@ -14,8 +14,16 @@ app.use(
 app.use(bodyPaser.json());
 
 app.post('/monitor - custom - yes',(req,res) => {
-    var user = req.body.result.parameters.username : "Seems like some problem. Speak again.";
-    var pass = req.body.result.parameters.password : "Seems like some problem. Speak again.";
+    var user = req.body.result &&
+                req.body.result.parameters &&
+                req.body.result.parameters.username
+                ? req.body.result.parameters.username
+                : "Seems like some problem. Speak again.";
+    var pass = req.body.result &&
+                req.body.result.parameters &&
+                req.body.result.parameters.password
+                ? req.body.result.parameters.password
+                : "Seems like some problem. Speak again.";
 
     const db = mysql.createConnection({
             host: 'localhost',
