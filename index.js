@@ -13,6 +13,10 @@ app.use(
 
 app.use(bodyPaser.json());
 
+app.get('/',(req,res)=>{
+    res.send('Hello World');
+});
+
 app.post('/monitor - custom - yes',(req,res) => {
     var user = req.body.result &&
                 req.body.result.parameters &&
