@@ -17,7 +17,7 @@ app.get('/',(req,res)=>{
     res.send('Hello World');
 });
 
-app.get('/monitor - custom - yes',(req,res) => {
+app.post('/monitor - custom - yes',(req,res) => {
     var user = req.body.result &&
                 req.body.result.parameters &&
                 req.body.result.parameters.username
@@ -39,7 +39,11 @@ app.get('/monitor - custom - yes',(req,res) => {
     let query = db.query(sql, (err,result) => {
         if(err) console.log('Cannot Query');
         console.log(result);
-        res.send('Customer Fetched...');
+        return res.json({
+            speech: speech,
+            displayText: speech,
+            source: "webhook-echo-sample"
+        });
     });
 });
 
