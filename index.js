@@ -30,10 +30,10 @@ app.post("/monitor-custom-yes",function(req, res){
                 ? req.body.result.parameters.password
                 : "Seems like some problem. Speak again.";
     const db = mysql.createConnection({
-            host: 'localhost',
-            user: 'id7769008_thiti7600',
-            pass: 'dew28433',
-            db  : 'id7769008_trackingventilator'
+        host     : 'sql12.freemysqlhosting.net',
+        user     : 'sql12279126',
+        password : 'IJ7Ckhkjng',
+        database : 'sql12279126'
     });
     
     db.connect((err) => {
