@@ -1,60 +1,40 @@
-'use strict';
+const functions = require("firebase-functions");
+const request = require("request-promise");
 
-const express = require('express');
-const bodyPaser = require('body-parser');
-const mysql = require('mysql');
-const app = express();
+exports.LineAdapter = functions.https.onRequest((req, res) => {
+  if (req.method === "POST") {
+    if (req.body.events[0].message.type !== "text") {
+      reply(req);
+    } else {
+      postToDialogflow(req);
+    }
+  }
+  return res.status(200).send(req.method);
+});
 
-app.use(
-    bodyPaser.urlencoded({
-        extended: true
+const reply = req => {
+  return request({
+    method: "POST",
+    uri: `${LINE_MESSAGING_API}/reply`,
+    headers: LINE_HEADER,
+    body: JSON.stringify({
+      replyToken: req.body.events[0].replyToken,
+      messages: [
+        {
+          type: "text",
+          text: JSON.stringify(req.body)
+        }
+      ]
     })
-);
+  });
+};
 
-app.use(bodyPaser.json());
-
-app.get('/',(req,res)=>{
-    res.send('Hello World');
-});
-
-app.get("/monitor-custom-yes",function(req, res){
-    var user =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.username
-      ? req.body.result.parameters.username
-      : "Seems like some problem. Speak again.";
-    var pass = req.body.result &&
-                req.body.result.parameters &&
-                req.body.result.parameters.password
-                ? req.body.result.parameters.password
-                : "Seems like some problem. Speak again.";
-    const db = mysql.createConnection({
-        host     : 'sql12.freemysqlhosting.net',
-        user     : 'sql12279126',
-        password : 'IJ7Ckhkjng',
-        database : 'sql12279126'
-    });
-    
-    db.connect((err) => {
-        if(err) console.log(err);
-        console.log('MySQL!!');
-        answer = 'MySQL';
-    });
-    
-    let sql = `SELECT * FROM customer WHERE Cus_ID = ${user} and Cus_Password ${pass}`;
-    let query = db.query(sql, (err,result) => {
-        if(err) console.log('Cannot Query');
-        console.log(result);
-        answer = result;
-    });
-    return res.json({
-       speech: user,
-       displayText: user,
-       source: "webhook-echo-sample"
-    });
-});
-
-app.listen(process.env.PORT ||'3000',() => {
-    console.log('Server up!');
-});
+const postToDialogflow = req => {
+  req.headers.host = "bots.dialogflow.com";
+  return request({
+    method: "POST",
+    uri: "https://bots.dialogflow.com/line/85659568-b9dd-48b8-ab2e-1b47ca5706ab/webhook",
+    headers: req.headers,
+    body: JSON.stringify(req.body)
+  });
+};
