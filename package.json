@@ -1,7 +1,7 @@
 {
   "name": "nodemysql",
   "version": "1.0.0",
-  "description": "Sample app for using mysql with node",
+  "description": "Sample app for using with node",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
