@@ -28,7 +28,6 @@ restService.post("/webhook", function(req, res) {
       : "Seems like some problem. Speak again.";
   var speech = user+pass;
   return res.json({
-    fulfillmentText: "Sample response",
     speech: speech,
     displayText: speech,
     source: "tracking-sample"
